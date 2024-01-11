@@ -12,7 +12,9 @@ const router = express.Router();
 
 const ctrl = require("./home.ctrl");
 
-router.get("/", ctrl.hello);
-router.get("/login", ctrl.login);
+// param1: 라우팅 경로, param2: return 객체로 이해
+router.get("/", ctrl.output.hello);
+router.get("/login", ctrl.output.login);
+router.post("/login", ctrl.process.login);
 
 module.exports = router;
