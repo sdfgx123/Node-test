@@ -58,7 +58,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * 라우팅과 미들웨어
- * 이 라인은 Express.js 애플리케이션에서 미들웨어를 등록하는 방법 중 하나임
+ * 이 라인(app.use)은 Express.js 애플리케이션에서 미들웨어를 등록하는 방법 중 하나임
  * 
  * 미들웨어 : req - res 객체 조작, req - res 사이클 종료, 사이클 내의 다음 미들웨어 함수 호출
  * 
