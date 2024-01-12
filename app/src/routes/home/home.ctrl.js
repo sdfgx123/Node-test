@@ -27,7 +27,9 @@ const process = {
         const id = req.body.id;
         const psword = req.body.psword;
 
-        console.log(UserStorage.getUsers());
+        // console.log(UserStorage.getUsers());
+
+        const users = UserStorage.getUsers("id", "psword");
 
         const response = {};
 
@@ -36,6 +38,7 @@ const process = {
 
             if (users.psword[idx] === psword) {
                 response.success = true;
+                response.msg = "succeeded";
                 return res.json(response);
             }
         }
