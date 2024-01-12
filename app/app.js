@@ -19,9 +19,14 @@
 app.js의 역할
 1. 애플리케이션 인스턴스 생성 > 이 인스턴스를 통해 전체 애플리케이션 config, middleware, routing 관리
 2. 전역 설정 > 템플릿 엔진 config, port num 등
-3. 라우터 연결 > 다른 파일에서 정의된 라우터 > 애플리케이션과 연결 > 라우직 로직 분리 관리 가능
+3. 라우터 연결 > 다른 파일에서 정의된 라우터 > 애플리케이션과 연결 > 라우팅 로직 분리 관리 가능
 */
 
+
+/**
+ * 모듈들을 불러오는 영역 && 상수 정의하는 영역
+ * 자바의 import와 같다고 보면 될 듯
+ */
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -41,7 +46,9 @@ app.set("view engine", "ejs");
 
 /**
  * Express.js에서 정적 파일을 서비스하기 위한 설정임
- * express.static : 정적 파일을 제공하기 위해 사용 -> 지정된 dir의 파일을 HTTP req의 URL과 매핑해서 제공 -> 이 설정을 통해 src/public dir 안에 있는 파일들을 웹서버의 root 경로("/")에서 직접 접근할 수 있도록 함 -> 정적 파일을 client에게 직접 제공 가능
+ * express.static : 정적 파일을 제공하기 위해 사용 -> 지정된 dir의 파일을 HTTP req의 URL과 매핑해서 제공 -> 이 설정을 통해 src/public dir 안에 있는 파일들을 웹서버의 root 경로("/")에서 직접 접근할 수 있도록 함 -> 정적 파일을 client에게 직접 제공 가능 (CSS, 이미지 파일 등)
+ * 
+ * app.use의 기본적인 의미 : Express 애플리케이션에 미들웨어 추가 -> bodyParser.json() : JSON 형식의 입력을 처리하는 미들웨어 함수 return -> req가 JSON이면 req.body 객체로 변환 -> 따라서 서버는 client로부터 JSON 형식을 데이터 받아서 이를 JS 객체로 접근해 사용함
  */
 app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.json());
